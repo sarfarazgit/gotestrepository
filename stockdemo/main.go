@@ -26,9 +26,9 @@ func main() {
 
 func StructureTojson(stockdata Stock) string {
 
-	var jsonresult, err = json.Marshal(stockdata)
+	var jsonresult, error = json.Marshal(stockdata)
 
-	if err != nil {
+	if error != nil {
 
 		return ("Invalid data recieved for conversion:")
 	}
