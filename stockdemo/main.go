@@ -41,11 +41,11 @@ func StructureTojson(stockdata Stock) string {
 func JsonTostructure(Jsondata []byte) {
 
 	var stockdata Stock
-	er := json.Unmarshal(Jsondata, &stockdata)
+	erorr := json.Unmarshal(Jsondata, &stockdata)
 
-	if er != nil {
+	if erorr != nil {
 
-		fmt.Println("Invalid data recieved for conversion:", er)
+		fmt.Println("Invalid data recieved for conversion:", erorr)
 		return
 	}
 
