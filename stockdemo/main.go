@@ -16,7 +16,7 @@ func main() {
 	// Sending for conversion (Marshaling)
 	var jsondata = StructureTojson(stockdata)
 
-	fmt.Printf("Your Stock details in jsondata: %v\n", jsondata)
+	fmt.Printf("Your Stock details in json:\n%v\n", jsondata)
 
 	// Sending for conversion (Unmarshalling)
 	JsonTostructure([]byte(jsondata))
@@ -48,8 +48,8 @@ func JsonTostructure(Jsondata []byte) {
 		fmt.Println("Invalid data recieved for conversion:", erorr)
 		return
 	}
-
-	fmt.Println("Your stock data post conversion:", stockdata)
+	fmt.Println("\n \t Stock Details in Go object \n")
+	fmt.Println("Stock Name =>:"+stockdata.Stockname+"\nTotal Stock =>:", stockdata.TotalStock)
 }
 
 type Stock struct {
