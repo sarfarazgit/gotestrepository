@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-func showElements(elements map[string]string) {
+func ShowElements(elements map[string]string) {
 	fmt.Println("\n **** Map Elements are **** \n")
 
 	for i, val := range elements {
@@ -29,7 +31,7 @@ func main() {
 	elements["phone"] = "Digital"
 	elements["Box"] = "Plastics"
 
-	showElements(elements)
+	ShowElements(elements)
 
 	// Test for element checking
 	checkElements("Test", elements)
