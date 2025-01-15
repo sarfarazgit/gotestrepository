@@ -1,6 +1,7 @@
 package servicepackage
 
 import (
+	"fmt"
 	"net/http"
 	"time"
 )
@@ -54,12 +55,14 @@ func measureResponseTime(url string) time.Duration {
 }
 
 // synchronise processes really easily and clearly
-func RacerSelect(slowURL, fastURL string) (winner string) {
+func RacerSelect(slowURL, fastURL string) (winner string, error error) {
 	select {
 	case <-ping(slowURL):
-		return slowURL
+		return slowURL, nil
 	case <-ping(fastURL):
-		return fastURL
+		return fastURL, nil
+	case <-time.After(10 * time.Second):
+		return "", fmt.Errorf("timed out waiting for %s and %s", slowURL, fastURL)
 	}
 }
 
