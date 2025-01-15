@@ -37,7 +37,11 @@ func TestRaceCondiition(t *testing.T) {
 
 	expected := fastURL
 	//result := servicepackage.Racer(slowURL, fastURL)
-	result := servicepackage.RacerSelect(slowURL, fastURL)
+	result, err := servicepackage.RacerSelect(slowURL, fastURL)
+
+	if err != nil {
+		t.Fatalf("did not expect an error but got one %v", err)
+	}
 
 	if expected != result {
 		t.Errorf("result %q, expected %q", result, expected)
