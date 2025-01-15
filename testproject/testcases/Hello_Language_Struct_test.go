@@ -1,6 +1,7 @@
 package main
 
 import (
+	"reflect"
 	"testing"
 	"testproject/servicepackage"
 )
@@ -41,5 +42,26 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 	t.Helper()
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
+	}
+}
+
+func TestLanguage(t *testing.T) {
+
+	result := servicepackage.Hello("Hello", "Spanish")
+	want := "Hola, Hello"
+
+	if result != want {
+		t.Errorf("The result %q and got %q", result, want)
+	}
+}
+
+func TestCircle(t *testing.T) {
+
+	circle := servicepackage.Circle{Radius: 2.5}
+	result := circle.AreaofCircle()
+	wants := 10.0
+
+	if !reflect.DeepEqual(result, wants) {
+		t.Errorf("Result %.2f and wants  %.2f", result, wants)
 	}
 }
